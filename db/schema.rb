@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602194529) do
+ActiveRecord::Schema.define(version: 20150602224835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,4 +49,29 @@ ActiveRecord::Schema.define(version: 20150602194529) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "dishes", force: :cascade do |t|
+    t.text     "name"
+    t.text     "description"
+    t.decimal  "price"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "restaurante_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "dishes", ["restaurante_id"], name: "index_dishes_on_restaurante_id", using: :btree
+
+  create_table "restaurantes", force: :cascade do |t|
+    t.text     "name"
+    t.text     "description"
+    t.text     "address"
+    t.string   "phone"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_foreign_key "dishes", "restaurantes"
 end
