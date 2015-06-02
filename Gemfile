@@ -43,3 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+#uuarios
+gem 'devise'
+
+#Panel Admin
+gem 'activeadmin', github: 'activeadmin'
