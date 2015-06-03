@@ -1,7 +1,7 @@
 ActiveAdmin.register Dish do
 permit_params :name, :description, :price, :photo
 belongs_to :restaurante
-	
+
 	form do |f|	
 		f.inputs "Dish" do
 			f.input :restaurante_id, :as => :select, :collection => Restaurante.all.map{|u| [u.name, u.id]}
