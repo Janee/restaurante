@@ -23,6 +23,8 @@ gem 'devise'
 
 #Panel Admin
 gem 'activeadmin', github: 'activeadmin'
+#Responsive
+gem 'responsive_active_admin'
 
 #Nested models
 gem 'cocoon'
